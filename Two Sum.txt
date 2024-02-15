@@ -1,0 +1,48 @@
+    public int[] twoSum(int[] nums, int target) {
+        //Approach 1 : Brute - force & TC - O(n2) SC - O(1)
+        int arr[] = new int[2];
+        int n = nums.length;
+
+        for(int i=0; i<n-1; i++){
+            for(int j=i+1; j<n; j++){
+                if(nums[i]+nums[j]==target){
+                    arr[0] = i;
+                    arr[1] = j;
+                    return arr;
+                }
+            }
+        }
+
+        return arr;
+       
+       //Approach 2 : Two-Pass Hash Table & TC - O(2n) = O(n) SC - O(n)
+
+       HashMap<Integer,Integer> map = new HashMap<>();
+       int n = nums.length;
+
+       for(int i=0; i<n; i++){
+           map.put(nums[i],i);
+       }
+        for(int i=0; i<n; i++){
+            int component = target - nums[i];
+            if(map.containsKey(component) && map.get(component)!=i){
+                return new int []{i,map.get(component)};
+            }
+        }
+
+    //     return new int []{};
+       //Approach 3 : One-Pass Hash Table & TC - O(n) SC - O(n)
+       
+       HashMap<Integer,Integer> map = new HashMap<>();
+       int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            int component = target - nums[i];
+            if(map.containsKey(component)){
+                return new int []{i,map.get(component)};
+            }
+            map.put(nums[i],i);
+        }
+
+        return new int []{};
+        }
