@@ -1,0 +1,18 @@
+public int removeDuplicates(int[] nums) {
+       
+       
+       int t=0;
+       int len = nums.length;
+       for(int i=1; i<len; i++)
+       {
+           if(nums[t]!=nums[i]){
+               t++;
+               nums[t] = nums[i];
+           }else{
+               continue;
+           }
+       }
+
+       return t+1;
+       
+}
