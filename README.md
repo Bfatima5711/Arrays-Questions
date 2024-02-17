@@ -96,7 +96,7 @@ Note: for code check attached file with name X of a Kind in a Deck of Cards
 
 Problem Statement: 3Sum
 
-//Easy level : question 4
+//medium level : question 4
 
 Given:
 Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
@@ -120,4 +120,26 @@ Notice that the order of the output and the order of the triplets does not matte
 Problem Link: https://leetcode.com/problems/3sum/description/
 
 Note: for code check attached file with name 3Sum
+
+//medium level : question 5
+
+Problem Statement: Rotate Array
+
+Given:
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Problem Link: https://leetcode.com/problems/rotate-array/description/
+
+Note: for code check attached file with name Rotate Array
 
