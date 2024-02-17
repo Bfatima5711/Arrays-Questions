@@ -1,0 +1,51 @@
+ public void rotate(int[] nums, int k) {
+        //Approach 1: TC: O(n2) ,it will give TLE ,Brute Force
+        int n = nums.length;
+        for(int i=0; i<k; i++){
+            int ans[] = new int[n];
+            ans[0] = nums[n-1];
+            for(int j=1; j<n; j++){
+                ans[j] = nums[j-1];
+            }
+             for(int l=0; l<n; l++){
+                nums[l] = ans[l];
+            }
+            
+        }
+
+
+        //Approach 2 TC: O(n) ,better
+        int n = nums.length;
+        k %= n;
+        int j=0;
+        int ans[] = new int[n];
+        for(int i=k; i>0; i--){
+            ans[j++] = nums[n-i];
+        }
+        int m=0;
+        for(int l=j; l<n; l++){
+            ans[l] = nums[m++];
+        }
+        for(int l=0; l<n; l++){
+            nums[l] = ans[l];
+        }
+
+        //Approach 3 TC: O(n) ,optimal
+
+        int n = nums.length;
+        k %= n;
+        rev(nums,0,n-1);
+        rev(nums,0,k-1);
+        rev(nums,k,n-1);
+
+    }
+
+    public void rev(int[] nums, int start, int end){
+        while(start<end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
