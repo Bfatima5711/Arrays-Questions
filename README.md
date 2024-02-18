@@ -143,3 +143,21 @@ Problem Link: https://leetcode.com/problems/rotate-array/description/
 
 Note: for code check attached file with name Rotate Array
 
+//medium level : question 6
+
+Problem Statement: Subarray Sum Equals K
+
+Given:
+Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+A subarray is a contiguous non-empty sequence of elements within an array.
+
+Example 1:
+Input: nums = [1,1,1], k = 2
+Output: 2
+
+Example 2:
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+Problem Link: https://leetcode.com/problems/subarray-sum-equals-k/
+Note: for code check attached file with name Subarray Sum Equals K
