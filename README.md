@@ -161,3 +161,22 @@ Output: 2
 
 Problem Link: https://leetcode.com/problems/subarray-sum-equals-k/
 Note: for code check attached file with name Subarray Sum Equals K
+
+//medium level : question 7
+Problem Statement: Longest Sub-Array with Sum K
+
+Given:
+Given an array containing N integers and an integer K., Your task is to find the length of the longest Sub-Array 
+with the sum of the elements equal to the given value K.
+
+Example 1:
+Input :
+A[] = {10, 5, 2, 7, 1, 9}
+K = 15
+Output : 4
+Explanation:
+The sub-array is {5, 2, 7, 1}.
+
+Problem Link: https://www.geeksforgeeks.org/problems/longest-sub-array-with-sum-k0809/1
+
+Note: for code check attached file with name Longest Sub-Array with Sum K
