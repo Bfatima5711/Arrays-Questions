@@ -166,7 +166,7 @@ Problem Link: https://leetcode.com/problems/maximum-product-of-three-numbers/des
 
 Note: for code check attached file with name Maximum Product of Three Numbers
 
-//medium level : question 6
+//medium level : question 1
 
 Problem Statement: Subarray Sum Equals K
 
@@ -185,7 +185,40 @@ Output: 2
 Problem Link: https://leetcode.com/problems/subarray-sum-equals-k/
 Note: for code check attached file with name Subarray Sum Equals K
 
-//medium level : question 7
+//Easy level : question 7
+
+Problem Statement: Check if Array Is Sorted and Rotated
+
+Given: 
+Given an array nums, return true if the array was originally sorted in non-decreasing order, then rotated some number of positions 
+(including zero). Otherwise, return false.
+
+There may be duplicates in the original array.
+
+Note: An array A rotated by x positions results in an array B of the same length such that A[i] == B[(i+x) % A.length], where % 
+is the modulo operation.
+
+Example 1:
+Input: nums = [3,4,5,1,2]
+Output: true
+Explanation: [1,2,3,4,5] is the original sorted array.
+You can rotate the array by x = 3 positions to begin on the the element of value 3: [3,4,5,1,2].
+
+Example 2:
+Input: nums = [2,1,3,4]
+Output: false
+Explanation: There is no sorted array once rotated that can make nums.
+
+Constraints:
+
+1 <= nums.length <= 100
+1 <= nums[i] <= 100
+
+Problem Link: https://leetcode.com/problems/check-if-array-is-sorted-and-rotated/description/
+
+Note: for code check attached file with name Check if Array Is Sorted and Rotated
+
+//medium level : question 2
 Problem Statement: Longest Sub-Array with Sum K
 
 Given:
