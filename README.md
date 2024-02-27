@@ -143,6 +143,29 @@ Problem Link: https://leetcode.com/problems/rotate-array/description/
 
 Note: for code check attached file with name Rotate Array
 
+//Easy level : question 6
+
+Problem Statement: Maximum Product of Three Numbers
+
+Given: 
+Given an integer array nums, find three numbers whose product is maximum and return the maximum product.
+
+Example 1:
+Input: nums = [1,2,3]
+Output: 6
+
+Example 2:
+Input: nums = [1,2,3,4]
+Output: 24
+
+Example 3:
+Input: nums = [-1,-2,-3]
+Output: -6
+
+Problem Link: https://leetcode.com/problems/maximum-product-of-three-numbers/description/
+
+Note: for code check attached file with name Maximum Product of Three Numbers
+
 //medium level : question 6
 
 Problem Statement: Subarray Sum Equals K
