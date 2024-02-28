@@ -75,7 +75,6 @@ Partition the cards into one or more groups such that:
 Each group has exactly x cards where x > 1, and
 All the cards in one group have the same integer written on them.
 Return true if such partition is possible, or false otherwise.
-
  
 
 Example 1:
@@ -94,56 +93,7 @@ Problem Link: https://leetcode.com/problems/x-of-a-kind-in-a-deck-of-cards/descr
 Note: for code check attached file with name X of a Kind in a Deck of Cards
 
 
-Problem Statement: 3Sum
-
-//medium level : question 4
-
-Given:
-Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
-
-Notice that the solution set must not contain duplicate triplets.
-
- 
-
-Example 1:
-
-Input: nums = [-1,0,1,2,-1,-4]
-Output: [[-1,-1,2],[-1,0,1]]
-Explanation: 
-nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
-nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
-nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
-The distinct triplets are [-1,0,1] and [-1,-1,2].
-Notice that the order of the output and the order of the triplets does not matter.
-
-
-Problem Link: https://leetcode.com/problems/3sum/description/
-
-Note: for code check attached file with name 3Sum
-
-//medium level : question 5
-
-Problem Statement: Rotate Array
-
-Given:
-Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
-
- 
-
-Example 1:
-
-Input: nums = [1,2,3,4,5,6,7], k = 3
-Output: [5,6,7,1,2,3,4]
-Explanation:
-rotate 1 steps to the right: [7,1,2,3,4,5,6]
-rotate 2 steps to the right: [6,7,1,2,3,4,5]
-rotate 3 steps to the right: [5,6,7,1,2,3,4]
-
-Problem Link: https://leetcode.com/problems/rotate-array/description/
-
-Note: for code check attached file with name Rotate Array
-
-//Easy level : question 6
+//Easy level : question 4
 
 Problem Statement: Maximum Product of Three Numbers
 
@@ -166,26 +116,9 @@ Problem Link: https://leetcode.com/problems/maximum-product-of-three-numbers/des
 
 Note: for code check attached file with name Maximum Product of Three Numbers
 
-//medium level : question 1
 
-Problem Statement: Subarray Sum Equals K
 
-Given:
-Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
-A subarray is a contiguous non-empty sequence of elements within an array.
-
-Example 1:
-Input: nums = [1,1,1], k = 2
-Output: 2
-
-Example 2:
-Input: nums = [1,2,3], k = 3
-Output: 2
-
-Problem Link: https://leetcode.com/problems/subarray-sum-equals-k/
-Note: for code check attached file with name Subarray Sum Equals K
-
-//Easy level : question 7
+//Easy level : question 5
 
 Problem Statement: Check if Array Is Sorted and Rotated
 
@@ -218,7 +151,123 @@ Problem Link: https://leetcode.com/problems/check-if-array-is-sorted-and-rotated
 
 Note: for code check attached file with name Check if Array Is Sorted and Rotated
 
+
+//Easy level : question 6
+
+Problem Statement: Pick from both sides!
+
+Given: 
+Given an integer array A of size N.
+You have to pick exactly B elements from either left or right end of the array A to get the maximum sum.
+Find and return this maximum possible sum.
+NOTE: Suppose B = 4 and array A contains 10 elements then
+You can pick the first four elements or can pick the last four elements or can pick 1 from the front and 
+3 from the back etc. you need to return the maximum possible sum of elements you can pick.
+
+Problem Constraints
+1 <= N <= 105
+1 <= B <= N
+-103 <= A[i] <= 103
+
+Input Format
+First argument is an integer array A.
+Second argument is an integer B.
+
+Output Format
+Return an integer denoting the maximum possible sum of elements you picked.
+
+Example Input
+Input 1:
+ A = [5, -2, 3 , 1, 2]
+ B = 3
+
+Input 2:
+ A = [1, 2]
+ B = 1
+
+Example Output
+Output 1:
+ 8
+Output 2:
+ 2
+
+Example Explanation
+Explanation 1:Pick element 5 from front and element (1, 2) from back so we get 5 + 1 + 2 = 8
+Explanation 2:Pick element 2 from end as this is the maximum we can get
+
+Problem Link: https://www.interviewbit.com/problems/pick-from-both-sides/
+
+Note: for code check attached file with name Pick from both sides!
+
+
+
+//medium level : question 1
+Problem Statement: 3Sum
+Given:
+Given an integer array nums, return all the triplets [nums[i], nums[j], nums[k]] such that i != j, i != k, and j != k, and nums[i] + nums[j] + nums[k] == 0.
+
+Notice that the solution set must not contain duplicate triplets.
+
+ 
+
+Example 1:
+
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+Explanation: 
+nums[0] + nums[1] + nums[2] = (-1) + 0 + 1 = 0.
+nums[1] + nums[2] + nums[4] = 0 + 1 + (-1) = 0.
+nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0.
+The distinct triplets are [-1,0,1] and [-1,-1,2].
+Notice that the order of the output and the order of the triplets does not matter.
+
+
+Problem Link: https://leetcode.com/problems/3sum/description/
+
+Note: for code check attached file with name 3Sum
+
 //medium level : question 2
+
+Problem Statement: Rotate Array
+
+Given:
+Given an integer array nums, rotate the array to the right by k steps, where k is non-negative.
+
+ 
+
+Example 1:
+
+Input: nums = [1,2,3,4,5,6,7], k = 3
+Output: [5,6,7,1,2,3,4]
+Explanation:
+rotate 1 steps to the right: [7,1,2,3,4,5,6]
+rotate 2 steps to the right: [6,7,1,2,3,4,5]
+rotate 3 steps to the right: [5,6,7,1,2,3,4]
+
+Problem Link: https://leetcode.com/problems/rotate-array/description/
+
+Note: for code check attached file with name Rotate Array
+
+//medium level : question 3
+
+Problem Statement: Subarray Sum Equals K
+
+Given:
+Given an array of integers nums and an integer k, return the total number of subarrays whose sum equals to k.
+A subarray is a contiguous non-empty sequence of elements within an array.
+
+Example 1:
+Input: nums = [1,1,1], k = 2
+Output: 2
+
+Example 2:
+Input: nums = [1,2,3], k = 3
+Output: 2
+
+Problem Link: https://leetcode.com/problems/subarray-sum-equals-k/
+Note: for code check attached file with name Subarray Sum Equals K
+
+//medium level : question 4
 Problem Statement: Longest Sub-Array with Sum K
 
 Given:
