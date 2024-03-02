@@ -1,0 +1,71 @@
+ 
+class Solution {
+    public void swap(int[] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
+    public void sortColors(int[] nums) {
+        //Approach 1 Beute force : TC: O(n^2) SC:(1)
+        //we can solve this problem using any sorting algieithm like merge sort which take 
+        //TC : O(nlog) SC: O(n), quick sort takes TC: O(nlogn) SC: O(1)
+        // bubble TC:O(n^2) SC:O(1) or insertion TC:O(n^2) SC: O(1)
+        //the below code is for selection sort 
+        int n = nums.length;
+        for(int i=0; i<n; i++){
+            int min = i;
+            for(int j=i+1; j<n; j++){
+                if(nums[j]<nums[min]){
+                    min = j;
+                }
+            }
+
+            int temp = nums[i];
+            nums[i] = nums[min];
+            nums[min] = temp;
+        }
+
+        //Approach 2 Better : TC: O(2n) SC:(1)
+        int cnt_0 = 0, cnt_1 = 0, cnt_2 = 0;
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            if(nums[i]==0){
+                cnt_0++;
+            }else if(nums[i]==1){
+                cnt_1++;
+            }else{
+                cnt_2++;
+            }
+        }
+
+        for(int i=0; i<cnt_0; i++){
+            nums[i] = 0;
+        }
+        for(int i=cnt_0; i < (cnt_0 + cnt_1); i++){
+            nums[i] = 1;
+        }
+        for(int i=(cnt_0 + cnt_1); i<n; i++){
+            nums[i] = 2;
+        }
+
+        // Approach 3 Optimal : TC: O(n) SC: O(1)
+        // solved using Dutch National flag algorithm
+
+        int n = nums.length;
+        int low = 0, mid = 0, high = n-1;
+
+       while(mid<=high){
+            if(nums[mid]==0){
+                swap(nums, low, mid);
+                low++;
+                mid++;
+            }else if(nums[mid]==1){
+                mid++;
+            }else{
+                swap(nums, mid, high);
+                high--;
+            }
+        }
+    }
+} 
