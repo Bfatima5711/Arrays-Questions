@@ -1,0 +1,83 @@
+class Solution {
+    public int maxSubArray(int[] nums) {
+
+        // //Approach 1 brute force : TC:O(n^3) SC:O(1)
+        int n = nums.length;
+        int sum=0;
+        int mx = Integer.MIN_VALUE;
+        for(int i=0; i<nums.length; i++){
+            for(int j=i; j<n; j++){
+                sum = 0;
+                for(int k=i; k<=j; k++){
+                    sum += nums[k];
+                    mx = Math.max(mx,sum);
+                }
+            }
+        }
+
+        // return mx;
+
+        //Approach 2 better : TC:O(n^2) SC:O(1)
+        
+        int sum = 0;
+        int mx = Integer.MIN_VALUE;
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            sum = 0;
+            for(int j=i; j<n; j++){
+                sum += nums[j];
+                mx = Math.max(mx,sum);
+            }
+        }
+
+        return mx;
+
+        //Approach 3 Optimal : TC:O(n) SC:O(1) Kadane Algorithm
+
+        int n = nums.length;
+        int sum = 0;
+        int mx = Integer.MIN_VALUE;
+
+        for(int i=0; i<n; i++){
+            sum+=nums[i];
+
+            if(sum>mx){
+                mx = sum;
+            }
+
+            if(sum<0){
+                sum=0;
+            }
+        }
+
+        return mx;
+
+        //Note: Below code is to print the maximum subarray sum elements 
+
+        int start=0, ansStart = -1, andEnd = -1;
+        int n = nums.length;
+        int sum = 0;
+        int mx = Integer.MIN_VALUE;
+
+        for(int i=0; i<n; i++){
+            if(sum==0) start = i;
+            sum = nums[i];
+
+            if(sum>mx){
+                mx = sum;
+
+                ansStart = start;
+                andEnd = i;
+            }
+
+            if(sum<0){
+                sum=0;
+            }
+        }
+
+        for(int i=ansStart; i<=ansEnd; i++){
+            System.out.print(nums[i]);
+        }
+    }
+}
