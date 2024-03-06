@@ -1,0 +1,78 @@
+class Solve {
+    int[] findTwoElement(int arr[], int N) {
+        //Approach 1: TC:O(n^2) SC:O(1)
+        int[] ans = new int[2];
+        int repeating = -1, missing = -1, cnt=0;
+        
+        for(int i=1; i<=n; i++){
+            cnt=0;
+            for(int j=0; j<n; j++){
+                if(arr[j]==i){
+                cnt++;
+                }
+            }
+            if(cnt==2){
+                repeating = i;
+            }else if(cnt==0){
+                missing = i;
+            }
+            
+            if(repeating != -1 && missing != -1){
+                ans[0] = repeating;
+                ans[1] = missing;
+                return ans;
+            }
+            
+        }
+        
+        return ans;
+        
+        //Approach 2: TC:O(2n) SC:O(n)
+        int[] hash = new int[n+1];
+        
+        for(int i=0; i<n; i++){
+            hash[arr[i]]++;
+        }
+        
+        int repeating = -1, missing = -1;
+        
+        for(int i=1; i<=n; i++){
+            if(hash[i]==2){
+                repeating = i;
+            }
+            if(hash[i]==0){
+                missing = i;
+            }
+            if(repeating!=-1 && missing!=-1){
+                break;
+            }
+        }
+        
+        int[] ans = {repeating, missing};
+        
+        return ans;
+        
+        //Approach 3: TC: O(n)  SC:O(1)
+        
+        long n = arr.length;
+        
+        long sum = (n * (n + 1)) / 2;// sum of fisrt n natural no
+        long sqr = (n * (n + 1) * (2 * n + 1)) / 6;// squre of first n natural no
+        long sumOfArrElmnt = 0, sqrOfArrElmnt = 0;
+        
+        for(int i=0; i<n; i++){
+            sumOfArrElmnt += arr[i];
+            sqrOfArrElmnt += (long)arr[i] * (long)arr[i];
+        }
+        
+        long val1 = sumOfArrElmnt - sum; //x-y
+        long val2 = sqrOfArrElmnt - sqr; //x^2 * y^2 => (x+y)(x-y)
+        val2 = val2 / val1; //x+y
+        long x = (val1 + val2) / 2;
+        long y = x - val1;
+        
+        int[] ans = {(int)x, (int)y};
+        
+        return ans;
+    }
+}
