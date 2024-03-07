@@ -1,0 +1,106 @@
+class Solution {
+    public List<List<Integer>> fourSum(int[] nums, int target) {
+        //Approach 1: Brute force TC: O(n^4) SC:O(2n)
+        Set<List<Integer>> set = new HashSet<>();
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){// running for loops so TC: O(n^4)
+            for(int j=i+1; j<n; j++){
+                for(int k=j+1; k<n; k++){
+                    for(int x=k+1; x<n; x++){
+                        // long sum = (long) nums[i] + nums[j];
+                        // sum += nums[k];
+                        // sum += nums[x]; 
+                        if((nums[i]+nums[j]+nums[k]+nums[x]) == target){
+                            //SC:O(4) to store the elemnt in list
+                            List<Integer> list = Arrays.asList(nums[i],nums[j],nums[k],nums[x]);
+                            Collections.sort(list);
+                            set.add(list);//SC:O(n) to store the elment
+                        }
+                    }
+                }
+            }
+        }
+        List<List<Integer>> ans = new ArrayList<>(set);
+        return ans;
+
+        //Approach 2: Better TC: O(n^3 * logn), SC:O(2n)+O(n)
+
+        Set<List<Integer>> set = new HashSet<>();
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            for(int j=i+1; j<n; j++){
+                Set<Long> hset = new HashSet<>();
+                for(int k=j+1; k<n; k++){
+                    long sum = (long) nums[i] + nums[j];
+                    sum += nums[k];
+
+                    long fourth = target-sum;
+
+                    if(hset.contains(fourth)){
+                        ArrayList<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        list.add(nums[k]);
+                        list.add((int)fourth);
+                        Collections.sort(list);
+                        set.add(list);
+                    } 
+
+                    hset.add((long)nums[k]);
+                }
+            }
+        }
+
+        List<List<Integer>> ans = new ArrayList<>(set);
+        return ans; 
+
+        //Approach 3: Optimal TC: O(n^3), SC:O(n) to store emnt in ans array
+
+        List<List<Integer>> ans = new ArrayList<>();
+        int n = nums.length;
+        Arrays.sort(nums);
+
+        for(int i=0; i<n; i++){
+            if(i>0 && nums[i]==nums[i-1]){
+                continue;
+            }
+            for(int j=i+1; j<n; j++){
+                if(j>i+1 && nums[j]==nums[j-1]){
+                    continue;
+                }
+                int k = j+1;
+                int l = n-1;
+                while(k<l){// overall while loop is running for O(n) times
+                    long sum = (long)nums[i];
+                    sum += nums[j];
+                    sum += nums[k];
+                    sum += nums[l];
+
+                    if(sum==target){
+                        List<Integer> list = new ArrayList<>();
+                        list.add(nums[i]);
+                        list.add(nums[j]);
+                        list.add(nums[k]);
+                        list.add(nums[l]);
+                        ans.add(list);
+                        k++;
+                        l--;
+                        while(k<l && nums[k]==nums[k-1]){
+                                k++;
+                        }
+                        while(k<l && nums[l]==nums[l+1]){
+                            l--;
+                        }
+                    }else if(sum<target){
+                        k++;
+                    }else{
+                        l--;
+                    }
+                }
+            }
+        }
+        return ans;
+    }
+}
