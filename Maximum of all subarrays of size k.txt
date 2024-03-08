@@ -1,0 +1,58 @@
+
+
+class Solution
+{
+    //Function to find maximum of each subarray of size k.
+    static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
+    {
+        // Your code here
+        
+        //Approach 1: TC: O(n*k) SC: O(n-k)
+        ArrayList<Integer> ans = new ArrayList<>();
+        int i = 0, j = 0;
+        int max = 0;
+        
+        while(i<=(n-k)){
+            j=0;
+            max = 0;
+            int x = i;
+            
+            while(j<k){
+                max = Math.max(max,arr[x++]);
+                j++;
+            }
+            
+            ans.add(max);
+            i++;
+        }
+        
+        return ans;
+        
+        //Approach 2: Optimal TC: O(n)+O(n) ~= O(n), SC: O(k)
+        
+        ArrayList<Integer> ans = new ArrayList<>();
+        Deque<Integer> q = new ArrayDeque<>();
+        
+        for(int i=0; i<n; i++){//TC: O(n)
+        //Time taken for removing starting elmnt whivh exits the limit that is k
+        //q.ppek==i-k and arr[q.peek]<arr[i] elemnt which small than current emnt 
+        //is O(n)
+            if(!q.isEmpty() && q.peek() == (i-k)){//q.peek() retrieve head elmnt
+                q.poll();//q.poll() retrieve and remove head
+            }
+            
+            while(!q.isEmpty() && arr[q.peekLast()]<arr[i]){
+                //q.peekLast() retrieve tail elmnt
+                q.pollLast();//q.pollLast() retrieve and remove tail
+            }
+            
+            q.offer(i);//q.offer() add elmnt at tail 
+            
+            if(i >= (k-1)){
+                ans.add(arr[q.peek()]);
+            }
+        }
+        
+        return ans;
+    }
+}
