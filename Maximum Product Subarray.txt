@@ -1,0 +1,51 @@
+class Solution {
+    public int maxProduct(int[] nums) {
+        //Approach 1: Brute force TC:O(n^3) SC:O(1)
+
+        int max = Integer.MIN_VALUE, prod = 1;
+
+        for(int i=0; i<nums.length; i++){
+            for(int j=0; j<nums.length; j++){
+                prod = 1;
+                for(int k=i; k<=j; k++){
+                    prod = nums[k]*prod;
+                    max = Math.max(max, prod);
+                }
+            }
+        }
+
+        return max;
+
+        //Approach 2: Better TC:O(n^2) SC:O(1)
+        int prod = 1;
+        int max = Integer.MIN_VALUE;
+
+        for(int i=0; i<nums.length; i++){
+            prod = 1;
+            for(int j=i; j<nums.length; j++){
+                prod = nums[j] * prod;
+                max = Math.max(prod,max);
+            }
+        }
+        return max;
+
+        //Approach 3: Optimal TC:O(n) SC:O(1)
+
+        int prefix = 1, suffix = 1;
+        int max = Integer.MIN_VALUE;
+        int n = nums.length;
+
+        for(int i=0; i<n; i++){
+            if(prefix==0) prefix = 1;
+            if(suffix==0) suffix = 1;
+
+            prefix = nums[i] * prefix;// multiply from start
+            suffix = nums[n-1-i] * suffix; // multiply from end
+
+            max = Math.max(max, Math.max(prefix, suffix));
+        }
+
+        return max;
+        
+    }
+}
