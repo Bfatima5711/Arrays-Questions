@@ -1,0 +1,112 @@
+class Solution {
+    public void makeZeros(int[][] matrix, int r, int c, int n, int m, boolean vis[][]){
+        //TC:O(n+m)
+        for(int i=0; i<m; i++){
+            if(matrix[r][i]!=0){
+                matrix[r][i] = -1;
+                vis[r][i] = true;
+            }
+        }
+        for(int i=0; i<n; i++){
+            if(matrix[i][c]!=0){
+                matrix[i][c] = -1;
+                vis[i][c] = true;
+            }
+        }
+    }
+
+
+    public void setZeroes(int[][] matrix) {
+        //Approach 1: Brute Force TC:O(n*m)*(n+m)+(n*m) SC:(n*m)
+        int n = matrix.length;
+        int m = matrix[0].length;
+        boolean[][] vis = new boolean[n][m]; // extra space jused to keep tract of elements SC:O(m*n)
+
+        for(int i=0; i<n; i++){//TC:O(n*m)
+            for(int j=0; j<m; j++){
+                if(matrix[i][j]==0){
+                    makeZeros(matrix, i, j, n, m, vis);//TC:O(m+n)
+                }
+            }
+        }
+        for(int i=0; i<n; i++){//TC:O(n*m)
+            for(int j=0; j<m; j++){
+                if(matrix[i][j]==-1 && vis[i][j]==true)
+                matrix[i][j] = 0;
+            }
+        }
+    }
+
+
+
+    public void setZeroes(int[][] matrix) {
+
+        //Approach 2: Better TC:O(2*n*m) SC:O(n)+O(m)
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int row[] = new int[n];//SC:O(n)
+        int col[] = new int[m];//SC:O(n)
+
+        for(int i=0; i<n; i++){//TC:O(n*m)
+            for(int j=0; j<m; j++){
+                if(matrix[i][j]==0){
+                    row[i] = 1;
+                    col[j] = 1;
+                }
+            }
+        }
+
+        for(int i=0; i<n; i++){//TC:(n*m)
+            for(int j=0; j<m; j++){
+                if(row[i]==1 || col[j]==1){
+                    matrix[i][j] = 0;
+                }
+            }
+        } 
+
+    public void setZeroes(int[][] matrix) {
+    //Approach 3: Optimal TC:O(2*n*m) SC:O(1)
+        int n = matrix.length;
+        int m = matrix[0].length;
+    //     int row[] = new int[n];//SC:O(n) // matrix[0][i] consider first row
+    //     int col[] = new int[m];//SC:O(n) // matrix[i][0] consider first col
+        int col_0 = 1;
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(matrix[i][j]==0){
+                    if(j!=0){
+                    matrix[0][j]=0;
+                    }else{
+                        col_0=0;
+                    }
+
+                    matrix[i][0]=0;
+                    
+                }
+            }
+        }
+
+        //Below three loops overall TC is O(n*m)
+        for(int i=1; i<n; i++){
+            for(int j=1; j<m; j++){
+                if(matrix[i][j]!=0){
+                    if(matrix[0][j]==0 || matrix[i][0]==0){
+                        matrix[i][j]=0;
+                    }
+                }
+            }
+        }
+
+        if(matrix[0][0]==0){
+            for(int j=0; j<m; j++){
+                matrix[0][j]=0;
+            }
+        }
+
+        if(col_0==0){
+            for(int i=0; i<n; i++){
+                matrix[i][0]=0;
+            }
+        }
+    }
+}
