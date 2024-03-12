@@ -1,0 +1,49 @@
+class Solution {
+    public void rotate(int[][] matrix) {
+
+        //Approach 1: Brute Force TC:O(n*m) SC:O(n*m)
+        int n = matrix.length;
+        int m = matrix[0].length;
+        int[][] temp = new int[n][m];
+        int row = n-1, col = 0, tempRow = 0;
+
+        while(col<m){
+            row = n-1;
+
+            for(int i=0; i<m; i++){
+                temp[tempRow][i] = matrix[row--][col];
+            }
+            col++;
+            tempRow++;
+        }
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                matrix[i][j] = temp[i][j];
+            }
+        }
+
+        //Approach 1: Optimal TC:O(n/2 * m/2)+O(n * m/2) SC:O(1)
+
+        int n = matrix.length;
+        int m = matrix[0].length;
+       // TC:O(n/2 * m/2)
+        for(int i=0; i<n-1; i++){//to swap first half time taken is n/2 same time is use for 2nd half swap
+            for(int j=i+1; j<n; j++){
+                //transpose the matrix means convert row into col and col into row
+                int temp = matrix[i][j];
+                matrix[i][j] = matrix[j][i];
+                matrix[j][i] = temp;
+            }
+        }
+        //TC:O(n * m/2)
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m/2; j++){
+                //reverse the row
+                int temp = matrix[i][j];// for swap n/2 times is used
+                matrix[i][j] = matrix[i][m-1-j];
+                matrix[i][m-1-j] = temp;
+            }
+        }
+    }
+}
